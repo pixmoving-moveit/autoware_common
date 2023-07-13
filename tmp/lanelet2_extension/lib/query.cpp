@@ -347,6 +347,19 @@ lanelet::ConstLineStrings3d query::getAllParkingSpaces(
   return parking_spaces;
 }
 
+lanelet::ConstLineStrings3d query::getAllCoverRefs(
+  const lanelet::LaneletMapConstPtr & lanelet_map_ptr)
+{
+  lanelet::ConstLineStrings3d parking_spaces;
+  for (const auto & ls : lanelet_map_ptr->lineStringLayer) {
+    const std::string type = ls.attributeOr(lanelet::AttributeName::Type, "none");
+    if (type=="coverage_path") {
+      parking_spaces.push_back(ls);
+    }
+  }
+  return parking_spaces;
+}
+
 bool query::getLinkedLanelet(
   const lanelet::ConstLineString3d & parking_space,
   const lanelet::LaneletMapConstPtr & lanelet_map_ptr, lanelet::ConstLanelet * linked_lanelet)

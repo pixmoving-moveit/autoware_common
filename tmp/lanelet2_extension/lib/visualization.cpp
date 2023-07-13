@@ -898,6 +898,25 @@ visualization_msgs::msg::MarkerArray visualization::parkingLotsAsMarkerArray(
   }
   return marker_array;
 }
+
+visualization_msgs::msg::MarkerArray visualization::garbageCansAsMarkerArray(
+  const lanelet::ConstPolygons3d & garbage_cans, const std_msgs::msg::ColorRGBA & c)
+{
+  visualization_msgs::msg::MarkerArray marker_array;
+
+  if (garbage_cans.empty()) {
+    return marker_array;
+  }
+  visualization_msgs::msg::Marker marker = createPolygonMarker("garbage_cans", c);
+  for (const auto & polygon : garbage_cans) {
+    pushPolygonMarker(&marker, polygon, c);
+  }
+  if (!marker.points.empty()) {
+      marker_array.markers.push_back(marker);
+    }
+  return marker_array;
+}
+
 visualization_msgs::msg::MarkerArray visualization::parkingSpacesAsMarkerArray(
   const lanelet::ConstLineStrings3d & parking_spaces, const std_msgs::msg::ColorRGBA & c)
 {

@@ -156,6 +156,10 @@ lanelet::ConstLineStrings3d getAllPedestrianMarkings(
 lanelet::ConstLineStrings3d getAllParkingSpaces(
   const lanelet::LaneletMapConstPtr & lanelet_map_ptr);
 
+// query all coverage reference path in lanelet2 map
+lanelet::ConstLineStrings3d getAllCoverRefs(
+  const lanelet::LaneletMapConstPtr & lanelet_map_ptr);
+
 // query linked parking spaces from lanelet
 lanelet::ConstLineStrings3d getLinkedParkingSpaces(
   const lanelet::ConstLanelet & lanelet, const lanelet::LaneletMapConstPtr & lanelet_map_ptr);

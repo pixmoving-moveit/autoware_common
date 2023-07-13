@@ -277,6 +277,14 @@ visualization_msgs::msg::MarkerArray parkingSpacesAsMarkerArray(
   const lanelet::ConstLineStrings3d & parking_spaces, const std_msgs::msg::ColorRGBA & c);
 
 /**
+ * [garbageCansAsMarkerArray creates marker array to visualize supply areas]
+ * @param  garbage_cans [garbage cans polygon]
+ * @param  c            [color of the marker]
+ */
+visualization_msgs::msg::MarkerArray garbageCansAsMarkerArray(
+  const lanelet::ConstPolygons3d & garbage_cans, const std_msgs::msg::ColorRGBA & c);
+
+/**
  * [detectionAreasAsMarkerArray creates marker array to visualize lanelet_id]
  * @param road_lanelets [road lanelets]
  * @param c [color of the marker]
